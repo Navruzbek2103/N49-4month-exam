@@ -1,0 +1,12 @@
+.basket-price-text{
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.loading{
+  display: none;
+}
+
+.loading--on{
+  display: block;
+}
