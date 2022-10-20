@@ -19,27 +19,27 @@ async function getData (url){
 getData("https://pressa-exem.herokuapp.com/api-49");
 
 function renderTemplate (allData){
-  let resultTemplate = "";
+  let newFragment = document.createDocumentFragment();
   allData.forEach((data, index) => {
-    resultTemplate = template.content.cloneNode(true);
-
-    let currency1 = template.content.querySelector("#currency1");
-    let currency2 = template.content.querySelector("#currency2");
-    let currency3 = template.content.querySelector("#currency3");
-    let currency4 = template.content.querySelector("#currency4");
-    let currency5 = template.content.querySelector("#currency5");
-    let currency6 = template.content.querySelector("#currency6");
-    let currency7 = template.content.querySelector("#currency7");
-
-    currency1.textContent = `${++index}`;
-    currency2.textContent = `${data.Code}`;
-    currency3.textContent = `${data.CcyNm_UZ}`;
-    currency4.textContent = `${data.Ccy}`;
-    currency5.textContent = `${data.Rate}`;
-    currency6.textContent = `${data.Date}`;
-    // currency7.textContent = `${++index}`;
-    tbody.appendChild(resultTemplate)
+    let newTr = document.createElement("tr")
+    newTr.innerHTML = `
+      <tr>
+        <th id="currency1">${++index}</th>
+        <td id="currency2">${data.Code}</td>
+        <td id="currency3">${data.CcyNm_UZ}</td>
+        <td id="currency4">${data.Ccy}</td>
+        <td id="currency5">${data.Rate}</td>
+        <td id="currency6">${data.Date}</td>
+        <td id="currency7">
+          <button class="btn btn-success">
+            <img src="./images/bookmark-24px.png" alt="bookmark icon" class="bookmark-img">
+          </button>
+        </td>
+      </tr>
+    `
+    newFragment.appendChild(newTr);
   });
+  tbody.appendChild(newFragment)
 }
 renderTemplate(currencyInfo)
 
@@ -76,8 +76,27 @@ input.addEventListener("input", () =>{
   let value = input.value.trim().toLowerCase();
   function filterPrice(allPrice){
     tbody.innerHTML = "";
-    let filtered = allPrice.filter((price) => value <= price.Rate )
+    let filtered = allPrice.filter((price) => value >= price.Rate )
     renderTemplate(filtered)
   }
   filterPrice(currencyInfo)
 })
+
+// search
+
+  // search.addEventListener("input", () =>{
+  //   let searchValue = search.value.trim().toLowerCase();
+
+  //   function renderSearching(allData){
+  //     let searched = [];
+  //     tbody.innerHTML = ""
+
+  //     allData.forEach(element => {
+  //       if(element.CcyNm_UZ.toLowerCase().includes(searchValue)){
+  //         searched.push(element)
+  //       }
+  //     });
+  //     renderTemplate(searched)
+  //   }
+  //   renderSearching(currencyInfo);
+  // })

@@ -11,12 +11,12 @@
 <body>
 
   <div class="container">
-    <header>
-      <nav class="navbar bg-light mb-5 py-3">
+    <header class="header position-fixed top-0">
+      <nav class="navbar bg-light py-4">
         <div class="container-fluid">
           <a class="navbar-brand">Navbar</a>
           <form class="d-flex align-items-center gap-4" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <input class="form-control me-2" id="search" type="search" placeholder="Search" aria-label="Search">
             <div class="basket d-flex flex-row align-items-center bg-warning rounded-1 px-4 py-1 gap-3">
               <img src="./images/purchase.png" alt="basket img" width="30" height="32">
               <span class="basket-price-text d-inline">12</span>
@@ -28,8 +28,9 @@
     <div class="loading loading--on" id="loading">
       <img src="./images/loading.gif" alt="loading gif" class="loading" width="50" height="50">
     </div>
-    <h1 class="site-title text-center mb-5">Currency information</h1>
-    <div class="working-zone mb-5 d-flex gap-3 align-items-center">
+    <div class="wrapper">
+      <h1 class="site-title text-center mb-5">Currency information</h1>
+    <div class="working-zone my-5 d-flex gap-3 align-items-center">
       <span class="sort-span">Sort -></span>
       <select class="form-select w-25" aria-label="Default select example">
         <option value="default">Default (asl holati)</option>
@@ -38,6 +39,7 @@
       </select>
       <span class="filter-span">Filter -></span>
       <input type="text" id="input" class="form-control w-25" placeholder="Filter by price">
+    </div>
     </div>
     <table class="table border rounded-1">
       <thead>
@@ -52,23 +54,9 @@
         </tr>
       </thead>
 
-      <template id="template">
-        <tr id="trow">
-          <th id="currency1"></th>
-          <td id="currency2"></td>
-          <td id="currency3"></td>
-          <td id="currency4"></td>
-          <td id="currency5"></td>
-          <td id="currency6"></td>
-          <td id="currency7">
-            <button class="btn btn-success">
-              <img src="./images/bookmark-24px.png" alt="bookmark icon" class="bookmark-img">
-            </button>
-          </td>
-        </tr>
-      </template>
-      <tbody id="tbody">
 
+      <tbody id="tbody">
+        
       </tbody>
     </table>
 
